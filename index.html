@@ -960,11 +960,15 @@ footer {
     </div>
     <div class="faq-item">
       <button class="faq-q">What is OVR (Overwrite) mode?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">OVR mode lets you rewind to a mistake using the jog wheel and re-record from that point. Your new audio replaces the old audio starting at the cursor position — and your transcript updates automatically in real time. It's the fastest way to correct a single sentence without re-recording your entire dictation.</div>
+      <div class="faq-a">OVR mode lets you rewind to a mistake using the jog wheel and re-record from that point. Your new audio replaces the old audio starting at the cursor position — and with patent-pending live transcript sync, your text updates automatically in real time. It's the fastest way to correct a single sentence without re-recording your entire dictation.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">What is INS (Insert) mode?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">INS mode splices new audio into your recording at the cursor position without removing anything. Everything after the insertion point shifts forward — and the transcript updates live as you speak. Use it to add a sentence you forgot without affecting the rest of your dictation.</div>
+      <div class="faq-a">INS mode splices new audio into your recording at the cursor position without removing anything. Everything after the insertion point shifts forward — and with patent-pending live transcript sync, new text appears exactly where it belongs as you speak. Use it to add a sentence you forgot without affecting the rest of your dictation.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">What makes the live transcript sync unique?<span class="faq-arrow">▾</span></button>
+      <div class="faq-a">DoxOver's patent-pending live speech-to-text synchronization keeps your transcript perfectly aligned with your audio during OVR and INS edits. When you overwrite, old text is replaced as you speak. When you insert, new text appears at the insertion point and existing text shifts forward — all in real time. No other mobile dictation app offers this.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">How does the 7-day trial work?<span class="faq-arrow">▾</span></button>
@@ -991,7 +995,7 @@ footer {
   <div class="footer-links">
     <a href="/privacy">Privacy Policy</a>
     <a href="/support">Support</a>
-    <a href="mailto:support@doxover.com">support@doxover.com</a>
+    <a href="/cdn-cgi/l/email-protection#97e4e2e7e7f8e5e3d7f3f8eff8e1f2e5b9f4f8fa"><span class="__cf_email__" data-cfemail="01727471716e737541656e796e7764732f626e6c">[email&#160;protected]</span></a>
   </div>
   <p class="footer-copy">© 2026 Clarity Synergy Solutions LLC &nbsp;·&nbsp; DoxOver™ &nbsp;·&nbsp; All rights reserved.</p>
 </footer>
@@ -999,7 +1003,7 @@ footer {
 <!-- Support chat FAB (replace with Tidio/Crisp script) -->
 <button class="chat-fab" onclick="alert('Support chat coming soon. Email support@doxover.com')">💬</button>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── VU METERS ──
 const vuRow = document.getElementById('vu-row');
 const vuCount = 28;
@@ -1098,12 +1102,4 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // ── FAQ ACCORDION ──
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-</script>
-</body>
-</html>
+    const i
