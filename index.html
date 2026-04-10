@@ -1133,6 +1133,7 @@ function runOvrAnim() {
   function typeNext() {
     if (i >= ovrWords.length) {
       setTimeout(() => {
+        target.innerHTML = '<span class="word replaced">right hip and right</span>';
         status.textContent = 'Transcript synced with audio ✓';
         setTimeout(runOvrAnim, 3500);
       }, 800);
