@@ -453,8 +453,9 @@ h1 em {
   min-height: 60px;
 }
 .demo-text-wrap .word { display: inline; transition: all 0.3s; }
-.demo-text-wrap .word.replaced { color: var(--teal); font-weight: 500; }
-.demo-text-wrap .word.error { color: #ff6b6b; text-decoration: line-through; opacity: 0.5; }
+.demo-text-wrap .word.replaced { color: var(--emerald); font-weight: 500; }
+.demo-text-wrap .word.error { color: #ff6b6b; opacity: 0.7; }
+.demo-text-wrap .word.struck { color: #ff6b6b; text-decoration: line-through; opacity: 0.5; }
 .demo-text-wrap .word.inserted { color: var(--emerald); font-weight: 500; }
 
 .demo-text-wrap .typing-cursor {
@@ -1124,7 +1125,7 @@ function runOvrAnim() {
 
   // Phase 2: strikethrough + cursor
   setTimeout(() => {
-    target.innerHTML = '<span class="word error" style="text-decoration:line-through;opacity:0.5">a left</span><span class="typing-cursor"></span>';
+    target.innerHTML = '<span class="word struck">a left</span><span class="typing-cursor"></span>';
     status.textContent = 'Recording over…';
   }, 1500);
 
@@ -1141,7 +1142,7 @@ function runOvrAnim() {
     }
     setTimeout(() => {
       const typed = ovrWords.slice(0, i + 1).join('');
-      target.innerHTML = '<span class="word error" style="text-decoration:line-through;opacity:0.5">a left</span> <span class="word replaced">' + typed + '</span><span class="typing-cursor"></span>';
+      target.innerHTML = '<span class="word replaced">' + typed + '</span><span class="typing-cursor"></span>';
       i++;
       typeNext();
     }, 550);
