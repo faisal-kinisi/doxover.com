@@ -54,7 +54,7 @@ nav {
   font-size: 22px;
   color: var(--text);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .nav-logo span { color: var(--teal); }
 .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -129,7 +129,7 @@ h1 {
   font-family: var(--serif);
   font-size: clamp(48px, 7vw, 88px);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
   color: var(--text);
   max-width: 820px;
   animation: fadeUp 0.7s 0.1s ease both;
@@ -364,7 +364,7 @@ h1 em {
   font-family: var(--serif);
   font-size: clamp(36px, 5vw, 60px);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   margin-bottom: 16px;
 }
 .section-sub {
@@ -456,6 +456,43 @@ h1 em {
 .demo-text-wrap .word.replaced { color: var(--teal); font-weight: 500; }
 .demo-text-wrap .word.error { color: #ff6b6b; text-decoration: line-through; opacity: 0.5; }
 .demo-text-wrap .word.inserted { color: var(--emerald); font-weight: 500; }
+
+.demo-text-wrap .typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--copper);
+  vertical-align: text-bottom;
+  margin: 0 1px;
+  animation: cursor-blink 0.6s infinite;
+}
+@keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.demo-status {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  min-height: 18px;
+}
+
+.demo-screenshot {
+  margin-top: 48px;
+  text-align: center;
+}
+.demo-screenshot img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--teal-glow);
+}
+.demo-screenshot-caption {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+}
 
 /* ── FEATURES GRID ── */
 .features-section {
@@ -564,7 +601,7 @@ h1 em {
   font-family: var(--serif);
   font-size: 72px;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
   color: var(--text);
   margin-bottom: 4px;
 }
@@ -810,8 +847,9 @@ footer {
       <div class="waveform" id="ovr-wave"></div>
 
       <div class="demo-text-wrap" id="ovr-text">
-        Patient presents with <span class="word error">chrest</span> pain onset three hours ago.
+        <span class="word">The patient was seen for </span><span id="ovr-target" class="word error">a left</span><span class="word"> knee and left shoulder pain.</span>
       </div>
+      <div class="demo-status" id="ovr-status">Rewinding to mistake…</div>
     </div>
 
     <!-- INS Card -->
@@ -823,9 +861,16 @@ footer {
       <div class="waveform" id="ins-wave"></div>
 
       <div class="demo-text-wrap" id="ins-text">
-        Patient presents with chest pain onset <span class="word">three hours ago.</span>
+        <span class="word">The patient arrived with left knee and </span><span id="ins-target"></span><span class="word" id="ins-after">shoulder pain.</span>
       </div>
+      <div class="demo-status" id="ins-status">Positioning playhead…</div>
     </div>
+  </div>
+
+  <!-- Real app screenshot -->
+  <div class="demo-screenshot reveal">
+    <img src="doxover-app-screenshot.png" alt="DoxOver app showing OVR mode with live transcript, jog wheel, and waveform" loading="lazy">
+    <p class="demo-screenshot-caption">DoxOver in action — OVR mode with live transcript sync on iPhone</p>
   </div>
 </section>
 
@@ -1065,31 +1110,83 @@ buildWave('ins-wave', 40, Object.fromEntries(
   [...Array(40)].map((_, i) => [i, i < 16 ? 'old' : i < 26 ? 'new' : 'old'])
 ));
 
-// Animate OVR text
-setTimeout(() => {
-  const ovrText = document.getElementById('ovr-text');
-  ovrText.innerHTML = 'Patient presents with <span class="word replaced">chest</span> pain onset three hours ago.';
-}, 2000);
-setInterval(() => {
-  const ovrText = document.getElementById('ovr-text');
-  ovrText.innerHTML = 'Patient presents with <span class="word error">chrest</span> pain onset three hours ago.';
-  setTimeout(() => {
-    ovrText.innerHTML = 'Patient presents with <span class="word replaced">chest</span> pain onset three hours ago.';
-  }, 2000);
-}, 5000);
+// Animate OVR text — word-by-word typing
+function runOvrAnim() {
+  const target = document.getElementById('ovr-target');
+  const status = document.getElementById('ovr-status');
+  const ovrWords = ['right', ' hip', ' and', ' right'];
+  if (!target || !status) return;
 
-// Animate INS text
-setTimeout(() => {
-  const insText = document.getElementById('ins-text');
-  insText.innerHTML = 'Patient presents with chest pain onset <span class="word inserted">approximately</span> three hours ago.';
-}, 3500);
-setInterval(() => {
-  const insText = document.getElementById('ins-text');
-  insText.innerHTML = 'Patient presents with chest pain onset <span class="word">three hours ago.</span>';
+  // Phase 1: show error state
+  target.className = 'word error';
+  target.textContent = 'a left';
+  status.textContent = 'Rewinding to mistake…';
+
+  // Phase 2: strikethrough + cursor
   setTimeout(() => {
-    insText.innerHTML = 'Patient presents with chest pain onset <span class="word inserted">approximately</span> three hours ago.';
-  }, 3000);
-}, 7000);
+    target.innerHTML = '<span class="word error" style="text-decoration:line-through;opacity:0.5">a left</span><span class="typing-cursor"></span>';
+    status.textContent = 'Recording over…';
+  }, 1500);
+
+  // Phase 3: type words one at a time
+  let i = 0;
+  function typeNext() {
+    if (i >= ovrWords.length) {
+      setTimeout(() => {
+        status.textContent = 'Transcript synced with audio ✓';
+        setTimeout(runOvrAnim, 3500);
+      }, 800);
+      return;
+    }
+    setTimeout(() => {
+      const typed = ovrWords.slice(0, i + 1).join('');
+      target.innerHTML = '<span class="word error" style="text-decoration:line-through;opacity:0.5">a left</span> <span class="word replaced">' + typed + '</span><span class="typing-cursor"></span>';
+      i++;
+      typeNext();
+    }, 550);
+  }
+  setTimeout(typeNext, 2800);
+}
+setTimeout(runOvrAnim, 500);
+
+// Animate INS text — word-by-word insertion
+function runInsAnim() {
+  const target = document.getElementById('ins-target');
+  const status = document.getElementById('ins-status');
+  const insWords = ['right', ' hip,', ' right'];
+  if (!target || !status) return;
+
+  // Phase 1: no insertion yet
+  target.innerHTML = '';
+  status.textContent = 'Positioning playhead…';
+
+  // Phase 2: cursor appears
+  setTimeout(() => {
+    target.innerHTML = '<span class="typing-cursor"></span>';
+    status.textContent = 'Inserting audio…';
+  }, 1800);
+
+  // Phase 3: type words one at a time
+  let i = 0;
+  function typeNext() {
+    if (i >= insWords.length) {
+      setTimeout(() => {
+        target.innerHTML = '<span class="word inserted">right hip, right </span>';
+        status.textContent = 'Transcript synced — text shifted forward ✓';
+        setTimeout(runInsAnim, 3500);
+      }, 800);
+      return;
+    }
+    setTimeout(() => {
+      const typed = insWords.slice(0, i + 1).join('');
+      target.innerHTML = '<span class="word inserted">' + typed + '</span><span class="typing-cursor"></span> ';
+      i++;
+      typeNext();
+    }, 550);
+  }
+  setTimeout(typeNext, 3000);
+}
+setTimeout(runInsAnim, 1200);
 
 // ── SCROLL REVEAL ──
 const observer = new IntersectionObserver((entries) => {
