@@ -29,7 +29,7 @@ nav{position:sticky;top:0;display:flex;align-items:center;justify-content:space-
 /* HERO */
 .hero{padding:72px 24px 56px;text-align:center;max-width:680px;margin:0 auto}
 .label{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
-h1{font-family:var(--serif);font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+h1{font-family:var(--serif);font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:0.01em;margin-bottom:16px}
 .hero-sub{color:var(--muted);font-size:17px;font-weight:300;max-width:480px;margin:0 auto 36px}
 
 /* SEARCH */
@@ -56,7 +56,7 @@ h1{font-family:var(--serif);font-size:clamp(40px,6vw,64px);line-height:1.05;lett
 .faq-section-group{margin-bottom:56px}
 .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .section-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.section-header h2{font-family:var(--serif);font-size:22px;letter-spacing:-.01em}
+.section-header h2{font-family:var(--serif);font-size:22px;letter-spacing:0.01em}
 
 /* ACCORDION */
 .faq-item{border-bottom:1px solid var(--border);overflow:hidden}
@@ -601,19 +601,19 @@ footer a:hover{color:var(--text)}
   <h3>Still have a question?</h3>
   <p>Our support team responds within one business day.</p>
   <a href="/support" class="btn">Contact Support</a>
-  <a href="mailto:support@doxover.com" class="btn btn-ghost">Email Us</a>
+  <a href="/cdn-cgi/l/email-protection#98ebede8e8f7eaecd8fcf7e0f7eefdeab6fbf7f5" class="btn btn-ghost">Email Us</a>
 </div>
 
 <footer>
   <a href="/">Home</a>
   <a href="/support">Support</a>
   <a href="/privacy">Privacy Policy</a>
-  <a href="mailto:support@doxover.com">support@doxover.com</a>
+  <a href="/cdn-cgi/l/email-protection#02717772726d707642666d7a6d7467702c616d6f"><span class="__cf_email__" data-cfemail="384b4d4848574a4c785c5740574e5d4a165b5755">[email&#160;protected]</span></a>
   <br><br>
   &copy; 2026 Clarity Synergy Solutions LLC &nbsp;&middot;&nbsp; DoxOver&trade;
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── ACCORDION ──
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -664,16 +664,4 @@ const sections = document.querySelectorAll('.faq-section-group');
 const sidebarLinks = document.querySelectorAll('.sidebar-links a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      sidebarLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-      });
-    }
-  });
-}, { rootMargin: '-20% 0px -60% 0px' });
-sections.forEach(s => observer.observe(s));
-</script>
-
-</body>
-</html>
+    if (entry.isIntersec
