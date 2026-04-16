@@ -55,6 +55,14 @@ nav {
   color: var(--text);
   text-decoration: none;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo img {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
 }
 .nav-logo span { color: var(--teal); }
 .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -762,7 +770,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Dox<span>Over</span></a>
+  <a href="#" class="nav-logo"><img src="doxover-icon.png" alt="DoxOver icon">Dox<span>Over</span></a>
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#security">Security</a>
