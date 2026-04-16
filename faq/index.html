@@ -599,21 +599,21 @@ footer a:hover{color:var(--text)}
 <!-- Still need help -->
 <div class="help-cta">
   <h3>Still have a question?</h3>
-  <p>Our support team responds within one business day.</p>
+  <p>DoxOver is built by a small, dedicated team. Please allow up to 5 business days for a response.</p>
   <a href="/support" class="btn">Contact Support</a>
-  <a href="/cdn-cgi/l/email-protection#98ebede8e8f7eaecd8fcf7e0f7eefdeab6fbf7f5" class="btn btn-ghost">Email Us</a>
+  <a href="mailto:support@doxover.com" class="btn btn-ghost">Email Us</a>
 </div>
 
 <footer>
   <a href="/">Home</a>
   <a href="/support">Support</a>
   <a href="/privacy">Privacy Policy</a>
-  <a href="/cdn-cgi/l/email-protection#02717772726d707642666d7a6d7467702c616d6f"><span class="__cf_email__" data-cfemail="384b4d4848574a4c785c5740574e5d4a165b5755">[email&#160;protected]</span></a>
+  <a href="mailto:support@doxover.com">support@doxover.com</a>
   <br><br>
   &copy; 2026 Create Simple Code LLC &nbsp;&middot;&nbsp; DoxOver&trade;
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── ACCORDION ──
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -664,4 +664,16 @@ const sections = document.querySelectorAll('.faq-section-group');
 const sidebarLinks = document.querySelectorAll('.sidebar-links a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersec
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      sidebarLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
