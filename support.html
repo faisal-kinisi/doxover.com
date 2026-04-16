@@ -14,8 +14,10 @@ nav{position:sticky;top:0;display:flex;align-items:center;justify-content:space-
 .nav-logo{font-family:var(--serif);font-size:28px;color:var(--text);text-decoration:none;letter-spacing:0.01em;display:flex;align-items:center;gap:12px}
 .nav-logo img{width:44px;height:44px;border-radius:10px}
 .nav-logo span span{color:var(--teal)}
-.nav-back{color:var(--muted);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px;transition:color .2s}
-.nav-back:hover{color:var(--text)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:7px 18px;border-radius:8px;font-weight:500!important}
 .hero{padding:80px 24px 60px;text-align:center;max-width:680px;margin:0 auto}
 .label{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
 h1{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1.1;letter-spacing:0.01em;margin-bottom:16px}
@@ -53,7 +55,12 @@ footer{border-top:1px solid var(--border);padding:48px 40px;display:flex;justify
 <body>
 <nav>
   <a href="/" class="nav-logo"><img src="/doxover-icon.png" alt="DoxOver icon"><span class="nav-logo-text">Dox<span>Over</span></span></a>
-  <a href="/" class="nav-back">← Back to DoxOver.com</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/faq">FAQ</a>
+    <a href="#" class="nav-cta">Free Trial</a>
+  </div>
 </nav>
 
 <div class="hero">
