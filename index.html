@@ -783,7 +783,7 @@ footer {
     <a href="#features">Features</a>
     <a href="#security">Security</a>
     <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
+    <a href="/faq">FAQ</a>
     <a href="/support">Support</a>
     <a href="#download" class="nav-cta">Free Trial</a>
   </div>
@@ -1006,48 +1006,13 @@ footer {
 
 <!-- FAQ -->
 <section class="faq-section" id="faq">
-  <div class="reveal">
+  <div class="reveal" style="text-align:center">
     <div class="section-label">Questions</div>
     <h2 class="section-title">Frequently asked.</h2>
-  </div>
-
-  <div style="margin-top:48px" class="reveal">
-    <div class="faq-item">
-      <button class="faq-q">Does any audio leave my device?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">Never. All speech recognition uses Apple's on-device framework — no internet connection is required and no audio is transmitted anywhere. Your recordings are encrypted and stored only on your iPhone.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Is DoxOver HIPAA compliant?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">DoxOver's architecture meets the technical safeguard requirements of the HIPAA Security Rule — AES-256-GCM encryption, Secure Enclave key storage, no cloud transmission. Whether your specific use case is HIPAA-compliant depends on your organization's policies and workflow. Consult your compliance officer for guidance.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What is OVR (Overwrite) mode?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">OVR mode lets you rewind to a mistake using the jog wheel and re-record from that point. Your new audio replaces the old audio starting at the cursor position — and with patent-pending live transcript sync, your text updates automatically in real time. It's the fastest way to correct a single sentence without re-recording your entire dictation.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What is INS (Insert) mode?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">INS mode splices new audio into your recording at the cursor position without removing anything. Everything after the insertion point shifts forward — and with patent-pending live transcript sync, new text appears exactly where it belongs as you speak. Use it to add a sentence you forgot without affecting the rest of your dictation.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What makes the live transcript sync unique?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">DoxOver's patent-pending live speech-to-text synchronization keeps your transcript perfectly aligned with your audio during OVR and INS edits. When you overwrite, old text is replaced as you speak. When you insert, new text appears at the insertion point and existing text shifts forward — all in real time. No other mobile dictation app offers this.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">How does the 7-day trial work?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">Download the app free. Full access starts immediately — no payment information required. After 7 days, the app asks if you'd like to unlock Pocket for a one-time payment of $14.99. Your recordings and transcripts are preserved either way.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What is Oxide seek audio?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">When you spin the jog wheel to seek through a recording, Oxide mode plays your own voice back at the seek speed — exactly like a cassette dictaphone rewinding. It gives you an intuitive audio cue for your position in the recording. You can switch to Electro mode (a clean electronic sweep) or turn it off entirely in Settings.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Can I export my transcripts?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">Yes. Transcripts export as TXT (plain text) or SRT (timestamped subtitle format compatible with video editors, medical transcription tools, and court reporting software). Audio exports as WAV. Share directly from the app to any destination.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Is there a subscription?<span class="faq-arrow">▾</span></button>
-      <div class="faq-a">No. DoxOver Pocket is a one-time purchase of $14.99. No monthly fees, no annual renewal, no recurring charges of any kind. Buy it once, own it forever. A Suite tier with additional features is planned as an optional subscription in a future update.</div>
-    </div>
+    <p style="color:var(--muted);font-size:17px;font-weight:300;margin:16px auto 36px;max-width:480px">Recording, editing, transcription, export, security, HIPAA, pricing, troubleshooting — we've answered them all.</p>
+    <a href="/faq" class="btn-primary" style="font-size:16px;padding:14px 32px">
+      View all FAQs
+    </a>
   </div>
 </section>
 
@@ -1213,15 +1178,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── FAQ ACCORDION ──
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
+
 </script>
 </body>
 </html>
