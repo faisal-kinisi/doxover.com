@@ -11,8 +11,9 @@
 :root{--bg:#0a0c0f;--surface:#111318;--border:rgba(255,255,255,0.07);--text:#f0ede8;--muted:#7a8090;--teal:#1a9b8a;--serif:'Instrument Serif',serif;--sans:'DM Sans',system-ui,sans-serif}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
 nav{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;background:rgba(10,12,15,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:100}
-.nav-logo{font-family:var(--serif);font-size:20px;color:var(--text);text-decoration:none;letter-spacing:0.01em}
-.nav-logo span{color:var(--teal)}
+.nav-logo{font-family:var(--serif);font-size:28px;color:var(--text);text-decoration:none;letter-spacing:0.01em;display:flex;align-items:center;gap:12px}
+.nav-logo img{width:44px;height:44px;border-radius:10px}
+.nav-logo span span{color:var(--teal)}
 .nav-back{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
 .nav-back:hover{color:var(--text)}
 .hero{padding:72px 24px 40px;text-align:center;max-width:720px;margin:0 auto}
@@ -41,16 +42,21 @@ ul li::before{content:'—';position:absolute;left:0;color:var(--teal)}
 .notice strong{color:var(--text);display:block;margin-bottom:6px}
 a{color:var(--teal);text-decoration:none}
 a:hover{text-decoration:underline}
-footer{border-top:1px solid var(--border);padding:32px 40px;text-align:center;color:var(--muted);font-size:13px}
-footer a{color:var(--muted);text-decoration:none;margin:0 12px}
-footer a:hover{color:var(--text)}
+footer{border-top:1px solid var(--border);padding:48px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;max-width:1200px;margin:0 auto}
+.footer-logo{font-family:var(--serif);font-size:20px;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.footer-logo img{width:30px;height:30px;border-radius:7px}
+.footer-logo span span{color:var(--teal)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{color:var(--muted);font-size:13px;width:100%}
 @media(max-width:640px){nav{padding:0 20px}.hero{padding:56px 20px 32px}.content{padding:0 20px 60px}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Dox<span>Over</span></a>
+  <a href="/" class="nav-logo"><img src="/doxover-icon.png" alt="DoxOver icon"><span class="nav-logo-text">Dox<span>Over</span></span></a>
   <a href="/" class="nav-back">← DoxOver.com</a>
 </nav>
 
@@ -202,11 +208,13 @@ footer a:hover{color:var(--text)}
 </div>
 
 <footer>
-  <a href="/">Home</a>
-  <a href="/support">Support</a>
-  <a href="mailto:support@doxover.com">support@doxover.com</a>
-  <br><br>
-  &copy; 2026 Create Simple Code LLC &nbsp;&middot;&nbsp; DoxOver&trade; &nbsp;&middot;&nbsp; All rights reserved.
+  <a href="/" class="footer-logo"><img src="/doxover-icon.png" alt="DoxOver icon"><span class="footer-logo-text">Dox<span>Over</span></span></a>
+  <div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/support">Support</a>
+    <a href="mailto:support@doxover.com">support@doxover.com</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Create Simple Code LLC &nbsp;&middot;&nbsp; DoxOver&trade; &nbsp;&middot;&nbsp; All rights reserved.</p>
 </footer>
 
 </body>
