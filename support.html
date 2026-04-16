@@ -40,9 +40,14 @@ h1{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1.1;lette
 .form-wrap option{background:#111318}
 .btn{background:var(--teal);color:#fff;border:none;border-radius:10px;padding:13px 28px;font-family:var(--sans);font-size:16px;font-weight:500;cursor:pointer;transition:opacity .2s;align-self:flex-start}
 .btn:hover{opacity:.85}
-footer{border-top:1px solid var(--border);padding:32px 40px;text-align:center;color:var(--muted);font-size:13px}
-footer a{color:var(--muted);text-decoration:none;margin:0 12px}
-footer a:hover{color:var(--text)}
+footer{border-top:1px solid var(--border);padding:48px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;max-width:1200px;margin:0 auto}
+.footer-logo{font-family:var(--serif);font-size:20px;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.footer-logo img{width:30px;height:30px;border-radius:7px}
+.footer-logo span span{color:var(--teal)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{color:var(--muted);font-size:13px;width:100%}
 </style>
 </head>
 <body>
@@ -117,11 +122,13 @@ footer a:hover{color:var(--text)}
 </div>
 
 <footer>
-  <a href="/">Home</a>
-  <a href="/privacy">Privacy Policy</a>
-  <a href="mailto:support@doxover.com">support@doxover.com</a>
-  <br><br>
-  © 2026 Create Simple Code LLC · DoxOver™
+  <a href="/" class="footer-logo"><img src="/doxover-icon.png" alt="DoxOver icon"><span class="footer-logo-text">Dox<span>Over</span></span></a>
+  <div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/support">Support</a>
+    <a href="mailto:support@doxover.com">support@doxover.com</a>
+  </div>
+  <p class="footer-copy">© 2026 Create Simple Code LLC &nbsp;·&nbsp; DoxOver™ &nbsp;·&nbsp; All rights reserved.</p>
 </footer>
 </body>
 </html>
